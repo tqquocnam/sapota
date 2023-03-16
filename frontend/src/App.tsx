@@ -1,11 +1,12 @@
-function App() {
-  return (
-    <div className=" my-16 mx-4 max-w-1200">
-      <div className="grid justify-items-center">
-        <span className="text-3xl font-bold text-blue-600">HELLO WORLD</span>
-      </div>
-    </div>
-  );
-}
+import { gql, useQuery } from "@apollo/client";
+import Link from "./components/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { Route, Routes } from "react-router-dom";
+import About from "./components/About";
+import { FC } from "react";
+import Router from "./routers";
+
+const App: FC = () => <Router />;
 
 export default App;
