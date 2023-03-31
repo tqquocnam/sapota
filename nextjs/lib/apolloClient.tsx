@@ -1,4 +1,10 @@
-import { ApolloClient, HttpLink, InMemoryCache, from, NormalizedCacheObject } from "@apollo/client";
+import {
+  ApolloClient,
+  HttpLink,
+  InMemoryCache,
+  from,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 
 import { concatPagination } from "@apollo/client/utilities";
@@ -13,14 +19,16 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) =>
-      console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`),
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
     );
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 const httpLink = new HttpLink({
-  uri: "https://flyby-router-demo.herokuapp.com/",
+  // uri: "https://flyby-router-demo.herokuapp.com/",
 
-  // uri: process.env.GRAPHQL_ENDPOINT || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT, // Server URL (must be absolute)
+  uri: process.env.GRAPHQL_ENDPOINT || process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT, // Server URL (must be absolute)
 });
 
 function createApolloClient() {
@@ -54,7 +62,9 @@ export function initializeApollo(initialState = null) {
       // combine arrays using object equality (like in sets)
       arrayMerge: (destinationArray, sourceArray) => [
         ...sourceArray,
-        ...destinationArray.filter((d) => sourceArray.every((s) => !isEqual(d, s))),
+        ...destinationArray.filter((d) =>
+          sourceArray.every((s) => !isEqual(d, s))
+        ),
       ],
     });
 

@@ -11,7 +11,10 @@ type IComp = {
 export const ModalMenuMobile = ({ onClose }: IComp) => {
   const { pathname } = useRouter();
   return (
-    <div className=" lg:hidden p-4 flex flex-col items-center" onClick={() => onClose()}>
+    <div
+      className=" lg:hidden p-4 flex flex-col items-center"
+      onClick={() => onClose()}
+    >
       <Link href="/lodash">
         <span className="px-4">lodash</span>
       </Link>

@@ -19,5 +19,9 @@ export const ModalWrapper = ({
       enableBodyScroll(document.body);
     }
   }, [isVisible]);
-  return <Fragment>{isVisible ? <div className={className}>{children}</div> : null}</Fragment>;
+  return (
+    <Fragment>
+      {isVisible ? <div className={className}>{children}</div> : null}
+    </Fragment>
+  );
 };
