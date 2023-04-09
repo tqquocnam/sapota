@@ -50,28 +50,30 @@ const LodashPage = () => {
             Manipulating & testing values
           </li>
           <li className="md:text-lg lg:text-lg text-sm">
-            Creating composite functions
+            Creating composite function
           </li>
         </div>
-        <div className="md:grid md:gap-24 md:grid-cols-2 md:px-12 flex flex-col gap-6">
-          {data.lodashes.data.map((item: any) => (
-            <div key={item.attributes.title} className="flex flex-col">
-              <span className="md:text-2xl text-fuchsia-600 font-medium text-base">
-                {item.attributes.title}
-              </span>
-              <span className="md:text-lg md:pt-3 md:pb-6 pt-2 pb-4 text-sm">
-                {item.attributes.description}
-              </span>
-              <span className="md:text-xl font-medium text-sm">
-                {item.attributes.label}
-              </span>
-              <div className="bg-slate-100 p-4 border-l-fuchsia-600 border-solid md:border-l-4 border-l-2 border-slate-100">
-                <span className="md:text-base text-xs">
-                  {item.attributes.content}
+        <div className="bg-gray-50 md:p-12 p-4">
+          <div className="md:grid md:gap-24 md:grid-cols-2 flex flex-col gap-6">
+            {data.lodashes.data.map((item: any) => (
+              <div key={item.attributes.title} className="flex flex-col">
+                <span className="md:text-2xl text-fuchsia-600 font-medium text-base">
+                  {item.attributes.title}
                 </span>
+                <span className="md:text-lg md:pt-3 md:pb-6 pt-2 pb-4 text-sm">
+                  {item.attributes.description}
+                </span>
+                <span className="md:text-xl font-medium text-sm">
+                  {item.attributes.label}
+                </span>
+                <div className="bg-gray-100 p-4 border-l-fuchsia-600 border-solid md:border-l-4 border-l-2 border-slate-100">
+                  <span className="md:text-base text-xs">
+                    {item.attributes.content}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

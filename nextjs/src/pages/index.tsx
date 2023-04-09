@@ -16,8 +16,9 @@ export default function Home() {
         <meta charSet="UTF-8" />
       </Head>
 
-      <div>
-        <span>hello</span>
+      <div className="grid md:px-12">
+        <span className="md:text-6xl text-2xl font-medium">HELLO.</span>
+        <span className="md:text-4xl text-lg font-medium">My name is Nam.</span>
       </div>
     </>
   );
