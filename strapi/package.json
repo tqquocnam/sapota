@@ -11,11 +11,13 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@strapi/plugin-graphql": "4.9.0",
     "@strapi/plugin-i18n": "4.9.0",
     "@strapi/plugin-users-permissions": "4.9.0",
     "@strapi/provider-upload-cloudinary": "^4.9.0",
     "@strapi/strapi": "4.9.0",
-    "pg": "8.8.0"
+    "pg": "8.8.0",
+    "strapi-plugin-react-editorjs": "2.0.2"
   },
   "author": {
     "name": "A Strapi developer"
