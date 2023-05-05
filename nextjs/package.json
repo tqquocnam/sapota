@@ -23,6 +23,7 @@
     "eslint-config-next": "13.2.4",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.3.4",
+    "github-slugger": "^2.0.0",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
     "highlight.js": "^11.7.0",
