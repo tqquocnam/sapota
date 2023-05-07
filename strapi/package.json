@@ -11,23 +11,22 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-graphql": "4.9.0",
-    "@strapi/plugin-i18n": "4.9.0",
-    "@strapi/plugin-users-permissions": "4.9.0",
-    "@strapi/provider-upload-cloudinary": "^4.9.0",
-    "@strapi/strapi": "4.9.0",
+    "@strapi/plugin-graphql": "4.10.2",
+    "@strapi/plugin-i18n": "4.10.2",
+    "@strapi/plugin-users-permissions": "4.10.2",
+    "@strapi/provider-upload-cloudinary": "^4.10.2",
+    "@strapi/strapi": "4.10.2",
     "pg": "8.8.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "67c9f4e5-0938-4492-8f7f-bbe66a09b8ed"
+    "uuid": "8e2a357e-8581-4638-8093-c917d566e8f5"
   },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "packageManager": "yarn@3.2.2"
+  "license": "MIT"
 }

@@ -1,5 +1,18 @@
 module.exports = ({ env }) => ({
   // ...
+  graphql: {
+    enabled: true,
+    config: {
+      endpoint: "/graphql",
+      shadowCRUD: true,
+      playgroundAlways: true,
+      defaultLimit: 10,
+      maxLimit: 20,
+      apolloServer: {
+        tracing: true,
+      },
+    },
+  },
   upload: {
     config: {
       provider: "cloudinary",
@@ -11,19 +24,6 @@ module.exports = ({ env }) => ({
       actionOptions: {
         upload: {},
         delete: {},
-      },
-    },
-  },
-  graphql: {
-    enabled: true,
-    config: {
-      endpoint: "/graphql",
-      shadowCRUD: true,
-      playgroundAlways: true,
-      defaultLimit: 10,
-      maxLimit: 20,
-      apolloServer: {
-        tracing: true,
       },
     },
   },
