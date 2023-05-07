@@ -1,7 +1,6 @@
 import Tag from "@/components/Tag";
 import { gql, useQuery } from "@apollo/react-hooks";
 import Link from "next/link";
-import formatDate from "utils/formatDate";
 
 // export async function getStaticProps() {
 //   const posts = await getAllFilesFrontMatter("blog");
@@ -42,7 +41,7 @@ const BlogPage = () => {
           </div>
           <ul className="divide-y divide-gray-200 dark:divide-gray-700">
             {data.blogs.data.map((item: any) => (
-              <li className="py-12">
+              <li className="py-12" key={item}>
                 <article>
                   <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                     <dl>
