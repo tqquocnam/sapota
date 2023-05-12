@@ -63,19 +63,19 @@ export function BlogSeo(props: BlogSeoProps) {
   });
 
   let authorList: AuthorSEO | AuthorSEO[] = [];
-  if (authorDetails) {
-    authorList = authorDetails.map((author) => {
-      return {
-        "@type": "Person",
-        name: author.name,
-      };
-    });
-  } else {
-    authorList = {
-      "@type": "Person",
-      name: siteMetadata.author,
-    };
-  }
+  // if (authorDetails) {
+  //   authorList = authorDetails.map((author) => {
+  //     return {
+  //       "@type": "Person",
+  //       name: author.name,
+  //     };
+  //   });
+  // } else {
+  //   authorList = {
+  //     "@type": "Person",
+  //     name: siteMetadata.author,
+  //   };
+  // }
 
   let structuredData = {
     "@context": "https://schema.org",

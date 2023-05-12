@@ -1,24 +1,27 @@
 import { Inter } from "next/font/google";
 import { PageSeo } from "@/components/SEO";
 import { siteMetadata } from "data/siteMetadata";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  let el = React.useRef(null);
-  let typed = React.useRef(null);
+  const el = useRef<HTMLDivElement>(null);
+  const typed = useRef<Typed | null>(null);
 
   useEffect(() => {
-    typed.current = new Typed(el.current, {
+    typed.current = new Typed(el.current!, {
       stringsElement: "#bios",
       typeSpeed: 40,
       backSpeed: 10,
       loop: true,
       backDelay: 1000,
     });
-    return () => typed.current.destroy();
+
+    return () => {
+      typed.current?.destroy();
+    };
   }, []);
 
   return (
