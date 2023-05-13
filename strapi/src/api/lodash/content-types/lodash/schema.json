@@ -4,7 +4,8 @@
   "info": {
     "singularName": "lodash",
     "pluralName": "lodashes",
-    "displayName": "Lodash"
+    "displayName": "Lodash",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,15 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "labelOfJS": {
+      "type": "string"
+    },
+    "contentOfJS": {
+      "type": "richtext"
+    },
+    "descriptionOfJS": {
+      "type": "text"
     }
   }
 }

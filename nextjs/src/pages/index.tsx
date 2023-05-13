@@ -33,13 +33,13 @@ export default function Home() {
 
       <div className="grid md:px-36 md:pt-12">
         <span
-          className="bg-gradient-to-r from-cyan-500 to-blue-500
+          className="bg-gradient-to-r from-blue-800 to-indigo-900
     mb-8 bg-clip-text text-6xl font-extrabold leading-[60px] tracking-tight text-transparent md:text-7xl md:leading-[86px]"
         >
           Hello !
         </span>
         <span
-          className="bg-gradient-to-r from-cyan-500 to-blue-500
+          className="bg-gradient-to-r from-blue-800 to-indigo-900
     mb-6 bg-clip-text text-3xl font-medium text-transparent md:text-4xl "
         >
           My name is Nam.<i className="twa twa-waving-hand"></i>
@@ -71,7 +71,7 @@ export default function Home() {
             </ul>
             <span
               ref={el}
-              className="text-neutral-900 dark:text-neutral-200 bg-gradient-to-r from-cyan-500 to-blue-500
+              className="text-neutral-900 dark:text-neutral-200 bg-gradient-to-r from-blue-800 to-indigo-900
                 mb-8 bg-clip-text tracking-tight text-transparent"
             />
           </div>

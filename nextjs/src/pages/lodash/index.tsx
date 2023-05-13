@@ -11,6 +11,10 @@ const LodashPage = () => {
             label
             description
             content
+            titleOfJS
+            labelOfJS
+            contentOfJS
+            descriptionOfJS
           }
         }
       }
@@ -54,26 +58,48 @@ const LodashPage = () => {
           </li>
         </div>
         <div className="bg-gray-50 md:p-12 p-4">
-          <div className="md:grid md:gap-24 md:grid-cols-2 flex flex-col gap-6">
-            {data.lodashes.data.map((item: any) => (
-              <div key={item.attributes.title} className="flex flex-col">
-                <span className="md:text-2xl text-fuchsia-600 font-medium text-base">
+          {data.lodashes.data.map((item: any) => (
+            <div key={item.attributes.title}>
+              <div className="flex flex-col">
+                <span className="md:text-2xl text-indigo-800 font-medium text-base">
                   {item.attributes.title}
                 </span>
-                <span className="md:text-lg md:pt-3 md:pb-6 pt-2 pb-4 text-sm">
-                  {item.attributes.description}
-                </span>
-                <span className="md:text-xl font-medium text-sm">
-                  {item.attributes.label}
-                </span>
-                <div className="bg-gray-100 p-4 border-l-fuchsia-600 border-solid md:border-l-4 border-l-2 border-slate-100">
-                  <span className="md:text-base text-xs">
-                    {item.attributes.content}
+                <div className="flex flex-row">
+                  <div className="basis-1/1"></div>
+                  <span className="md:text-base md:pt-3 md:pb-6 pt-2 pb-4 text-sm ">
+                    {item.attributes.description}
                   </span>
+                  <div className="basis-3/4"></div>
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="flex flex-row md:grid-flow-row md:gap-24 pb-12 gap-3">
+                <div className="basis-1/2">
+                  <div className="flex flex-col">
+                    <span className="md:text-lg font-medium text-sm">
+                      {item.attributes.label}
+                    </span>
+                    <div className="bg-gray-100 p-4 border-l-indigo-400 border-solid md:border-l-4 border-l-2 border-slate-100">
+                      <span className="md:text-base text-xs">
+                        {item.attributes.content}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="basis-1/2">
+                  <div className="flex flex-col">
+                    <span className="md:text-lg font-medium text-sm">
+                      {item.attributes.labelOfJS}
+                    </span>
+                    <div className="bg-gray-100 p-4 border-l-indigo-400 border-solid md:border-l-4 border-l-2 border-slate-100">
+                      <span className="md:text-base text-xs">
+                        {item.attributes.contentOfJS}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
