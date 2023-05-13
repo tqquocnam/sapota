@@ -11,10 +11,8 @@ const LodashPage = () => {
             label
             description
             content
-            titleOfJS
             labelOfJS
             contentOfJS
-            descriptionOfJS
           }
         }
       }

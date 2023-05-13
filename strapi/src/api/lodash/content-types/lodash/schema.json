@@ -29,9 +29,6 @@
     },
     "contentOfJS": {
       "type": "richtext"
-    },
-    "descriptionOfJS": {
-      "type": "text"
     }
   }
 }
