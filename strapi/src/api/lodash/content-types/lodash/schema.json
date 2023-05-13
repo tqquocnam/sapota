@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lodashes",
+  "info": {
+    "singularName": "lodash",
+    "pluralName": "lodashes",
+    "displayName": "Lodash"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "label": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
