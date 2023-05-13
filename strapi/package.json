@@ -18,8 +18,7 @@
     "@strapi/strapi": "4.10.2",
     "better-sqlite3": "7.4.6",
     "pg": "8.8.0",
-    "strapi-plugin-react-editorjs": "^2.0.2",
-    "yarn": "^1.22.19"
+    "strapi-plugin-react-editorjs": "^2.0.2"
   },
   "author": {
     "name": "A Strapi developer"
@@ -28,8 +27,9 @@
     "uuid": "5e29ffb4-31cb-44e3-ac9f-61547eccf723"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=12.x.x <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@3.2.2"
 }
