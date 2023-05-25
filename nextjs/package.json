@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config graphql.config.yml"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
@@ -39,6 +40,11 @@
     "typescript": "5.0.2"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/typescript": "^3.0.4",
+    "@graphql-codegen/typescript-graphql-request": "^5.0.0",
+    "@graphql-codegen/typescript-operations": "^3.0.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/body-scroll-lock": "^3.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",

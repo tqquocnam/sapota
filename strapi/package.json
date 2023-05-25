@@ -11,27 +11,22 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@ckeditor/ckeditor5-markdown-gfm": "^37.1.0",
-    "@ckeditor/strapi-plugin-ckeditor": "^0.0.7",
-    "@strapi/plugin-graphql": "4.10.2",
-    "@strapi/plugin-i18n": "4.10.2",
-    "@strapi/plugin-users-permissions": "4.10.2",
-    "@strapi/provider-upload-cloudinary": "^4.10.2",
-    "@strapi/strapi": "4.10.2",
-    "better-sqlite3": "7.4.6",
-    "pg": "8.8.0",
-    "strapi-plugin-ckeditor5": "^2.1.1-rc.1"
+    "@strapi/plugin-graphql": "4.10.6",
+    "@strapi/plugin-i18n": "4.10.6",
+    "@strapi/plugin-users-permissions": "4.10.6",
+    "@strapi/provider-upload-cloudinary": "^4.10.6",
+    "@strapi/strapi": "4.10.6",
+    "pg": "8.8.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "5e29ffb4-31cb-44e3-ac9f-61547eccf723"
+    "uuid": "2a8fae13-0f7c-400d-aa22-8e347543796f"
   },
   "engines": {
-    "node": ">=12.x.x <=18.x.x",
+    "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "packageManager": "yarn@3.2.2"
+  "license": "MIT"
 }

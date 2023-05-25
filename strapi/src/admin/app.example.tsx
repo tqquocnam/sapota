@@ -1,5 +1,3 @@
-const config = {};
-
 export default {
   config: {
     locales: [
