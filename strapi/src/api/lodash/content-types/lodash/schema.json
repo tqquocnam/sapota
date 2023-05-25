@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "label": {
       "type": "string"
     },
@@ -29,6 +26,9 @@
     },
     "contentOfJS": {
       "type": "richtext"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

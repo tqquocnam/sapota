@@ -1,0 +1,14 @@
+query dataLodash {
+  lodashes {
+    data {
+      attributes {
+        title
+        label
+        description
+        content
+        labelOfJS
+        contentOfJS
+      }
+    }
+  }
+}

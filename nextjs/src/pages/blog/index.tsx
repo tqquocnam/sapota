@@ -1,5 +1,6 @@
 import Tag from "@/components/Tag";
 import { gql, useQuery } from "@apollo/react-hooks";
+import { DataBlogDocument } from "generated/graphql";
 import Link from "next/link";
 
 // export async function getStaticProps() {
@@ -10,19 +11,7 @@ import Link from "next/link";
 const MAX_DISPLAY = 5;
 const tags = ["a", "b", "c"];
 const BlogPage = () => {
-  const { loading, error, data } = useQuery(gql`
-    query dataLodash {
-      blogs {
-        data {
-          attributes {
-            title
-            description
-            dateTime
-          }
-        }
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(DataBlogDocument);
   console.log(data);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;

@@ -1,23 +1,9 @@
 import { gql, useQuery } from "@apollo/react-hooks";
+import { DataLodashDocument } from "generated/graphql";
 import Head from "next/head";
 
 const LodashPage = () => {
-  const { loading, error, data } = useQuery(gql`
-    query dataLodash {
-      lodashes {
-        data {
-          attributes {
-            title
-            label
-            description
-            content
-            labelOfJS
-            contentOfJS
-          }
-        }
-      }
-    }
-  `);
+  const { loading, error, data } = useQuery(DataLodashDocument);
   console.log(data);
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;

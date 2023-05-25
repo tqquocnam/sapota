@@ -1,5 +1,5 @@
 schema:
-  - "https://rickandmortyapi.com/graphql"
+  - "http://localhost:1337/graphql" 
 documents:
   - "./graphql/**/*.graphql"
 generates:
