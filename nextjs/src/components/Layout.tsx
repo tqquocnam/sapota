@@ -9,10 +9,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header />
-      <main>{children}</main>
-
-      {/* <Footer /> */}
+      <div className="flex flex-col h-screen justify-between">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </div>
     </>
   );
 };

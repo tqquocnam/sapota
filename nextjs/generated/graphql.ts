@@ -32,7 +32,7 @@ export type Article = {
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   related_article?: Maybe<ArticleRelationResponseCollection>;
   slug?: Maybe<Scalars['String']['output']>;
-  thumbnail?: Maybe<UploadFileRelationResponseCollection>;
+  thumbnail?: Maybe<UploadFileEntityResponse>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -57,13 +57,6 @@ export type ArticleRelated_ArticleArgs = {
   filters?: InputMaybe<ArticleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type ArticleThumbnailArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -110,60 +103,13 @@ export type ArticleInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   related_article?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   slug?: InputMaybe<Scalars['String']['input']>;
-  thumbnail?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ArticleRelationResponseCollection = {
   __typename?: 'ArticleRelationResponseCollection';
   data: Array<ArticleEntity>;
-};
-
-export type Blog = {
-  __typename?: 'Blog';
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  dateTime?: Maybe<Scalars['DateTime']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type BlogEntity = {
-  __typename?: 'BlogEntity';
-  attributes?: Maybe<Blog>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type BlogEntityResponse = {
-  __typename?: 'BlogEntityResponse';
-  data?: Maybe<BlogEntity>;
-};
-
-export type BlogEntityResponseCollection = {
-  __typename?: 'BlogEntityResponseCollection';
-  data: Array<BlogEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type BlogFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  dateTime?: InputMaybe<DateTimeFilterInput>;
-  description?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<BlogFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type BlogInput = {
-  dateTime?: InputMaybe<Scalars['DateTime']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type BooleanFilterInput = {
@@ -321,7 +267,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Article | Blog | Category | I18NLocale | Lodash | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | Category | I18NLocale | MediaLibrary | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -431,62 +377,6 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type Lodash = {
-  __typename?: 'Lodash';
-  content?: Maybe<Scalars['String']['output']>;
-  contentOfJS?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  label?: Maybe<Scalars['String']['output']>;
-  labelOfJS?: Maybe<Scalars['String']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type LodashEntity = {
-  __typename?: 'LodashEntity';
-  attributes?: Maybe<Lodash>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type LodashEntityResponse = {
-  __typename?: 'LodashEntityResponse';
-  data?: Maybe<LodashEntity>;
-};
-
-export type LodashEntityResponseCollection = {
-  __typename?: 'LodashEntityResponseCollection';
-  data: Array<LodashEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type LodashFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<LodashFiltersInput>>>;
-  content?: InputMaybe<StringFilterInput>;
-  contentOfJS?: InputMaybe<StringFilterInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  description?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  label?: InputMaybe<StringFilterInput>;
-  labelOfJS?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<LodashFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<LodashFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type LodashInput = {
-  content?: InputMaybe<Scalars['String']['input']>;
-  contentOfJS?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  label?: InputMaybe<Scalars['String']['input']>;
-  labelOfJS?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type LongFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
@@ -509,6 +399,65 @@ export type LongFilterInput = {
   null?: InputMaybe<Scalars['Boolean']['input']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
   startsWith?: InputMaybe<Scalars['Long']['input']>;
+};
+
+export type MediaLibrary = {
+  __typename?: 'MediaLibrary';
+  content?: Maybe<UploadFileRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  file_type?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Long']['output']>;
+  page?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type MediaLibraryContentArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type MediaLibraryEntity = {
+  __typename?: 'MediaLibraryEntity';
+  attributes?: Maybe<MediaLibrary>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type MediaLibraryEntityResponse = {
+  __typename?: 'MediaLibraryEntityResponse';
+  data?: Maybe<MediaLibraryEntity>;
+};
+
+export type MediaLibraryEntityResponseCollection = {
+  __typename?: 'MediaLibraryEntityResponseCollection';
+  data: Array<MediaLibraryEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type MediaLibraryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<MediaLibraryFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  file_type?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<MediaLibraryFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<MediaLibraryFiltersInput>>>;
+  order?: InputMaybe<LongFilterInput>;
+  page?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  type?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type MediaLibraryInput = {
+  content?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  file_type?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Long']['input']>;
+  page?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Menu = {
@@ -566,9 +515,8 @@ export type Mutation = {
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createArticle?: Maybe<ArticleEntityResponse>;
-  createBlog?: Maybe<BlogEntityResponse>;
   createCategory?: Maybe<CategoryEntityResponse>;
-  createLodash?: Maybe<LodashEntityResponse>;
+  createMediaLibrary?: Maybe<MediaLibraryEntityResponse>;
   createMenu?: Maybe<MenuEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -577,9 +525,8 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteArticle?: Maybe<ArticleEntityResponse>;
-  deleteBlog?: Maybe<BlogEntityResponse>;
   deleteCategory?: Maybe<CategoryEntityResponse>;
-  deleteLodash?: Maybe<LodashEntityResponse>;
+  deleteMediaLibrary?: Maybe<MediaLibraryEntityResponse>;
   deleteMenu?: Maybe<MenuEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -599,10 +546,9 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateArticle?: Maybe<ArticleEntityResponse>;
-  updateBlog?: Maybe<BlogEntityResponse>;
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
-  updateLodash?: Maybe<LodashEntityResponse>;
+  updateMediaLibrary?: Maybe<MediaLibraryEntityResponse>;
   updateMenu?: Maybe<MenuEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -626,18 +572,13 @@ export type MutationCreateArticleArgs = {
 };
 
 
-export type MutationCreateBlogArgs = {
-  data: BlogInput;
-};
-
-
 export type MutationCreateCategoryArgs = {
   data: CategoryInput;
 };
 
 
-export type MutationCreateLodashArgs = {
-  data: LodashInput;
+export type MutationCreateMediaLibraryArgs = {
+  data: MediaLibraryInput;
 };
 
 
@@ -671,17 +612,12 @@ export type MutationDeleteArticleArgs = {
 };
 
 
-export type MutationDeleteBlogArgs = {
-  id: Scalars['ID']['input'];
-};
-
-
 export type MutationDeleteCategoryArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type MutationDeleteLodashArgs = {
+export type MutationDeleteMediaLibraryArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -757,12 +693,6 @@ export type MutationUpdateArticleArgs = {
 };
 
 
-export type MutationUpdateBlogArgs = {
-  data: BlogInput;
-  id: Scalars['ID']['input'];
-};
-
-
 export type MutationUpdateCategoryArgs = {
   data: CategoryInput;
   id: Scalars['ID']['input'];
@@ -775,8 +705,8 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
-export type MutationUpdateLodashArgs = {
-  data: LodashInput;
+export type MutationUpdateMediaLibraryArgs = {
+  data: MediaLibraryInput;
   id: Scalars['ID']['input'];
 };
 
@@ -843,15 +773,13 @@ export type Query = {
   __typename?: 'Query';
   article?: Maybe<ArticleEntityResponse>;
   articles?: Maybe<ArticleEntityResponseCollection>;
-  blog?: Maybe<BlogEntityResponse>;
-  blogs?: Maybe<BlogEntityResponseCollection>;
   categories?: Maybe<CategoryEntityResponseCollection>;
   category?: Maybe<CategoryEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
-  lodash?: Maybe<LodashEntityResponse>;
-  lodashes?: Maybe<LodashEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  mediaLibraries?: Maybe<MediaLibraryEntityResponseCollection>;
+  mediaLibrary?: Maybe<MediaLibraryEntityResponse>;
   menu?: Maybe<MenuEntityResponse>;
   menus?: Maybe<MenuEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -872,19 +800,6 @@ export type QueryArticleArgs = {
 
 export type QueryArticlesArgs = {
   filters?: InputMaybe<ArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type QueryBlogArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryBlogsArgs = {
-  filters?: InputMaybe<BlogFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -916,16 +831,16 @@ export type QueryI18NLocalesArgs = {
 };
 
 
-export type QueryLodashArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-
-export type QueryLodashesArgs = {
-  filters?: InputMaybe<LodashFiltersInput>;
+export type QueryMediaLibrariesArgs = {
+  filters?: InputMaybe<MediaLibraryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryMediaLibraryArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
@@ -1399,17 +1314,7 @@ export type CategoriesListQuery = { __typename?: 'Query', categories?: { __typen
 export type DataArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DataArticlesQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
-
-export type DataBlogQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DataBlogQuery = { __typename?: 'Query', blogs?: { __typename?: 'BlogEntityResponseCollection', data: Array<{ __typename?: 'BlogEntity', attributes?: { __typename?: 'Blog', title?: string | null, description?: string | null, dateTime?: any | null } | null }> } | null };
-
-export type DataLodashQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DataLodashQuery = { __typename?: 'Query', lodashes?: { __typename?: 'LodashEntityResponseCollection', data: Array<{ __typename?: 'LodashEntity', attributes?: { __typename?: 'Lodash', title?: string | null, label?: string | null, description?: string | null, content?: string | null, labelOfJS?: string | null, contentOfJS?: string | null } | null }> } | null };
+export type DataArticlesQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }> } | null };
 
 export type GetAllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1422,28 +1327,28 @@ export type GetBlogByCategoryQueryVariables = Exact<{
 }>;
 
 
-export type GetBlogByCategoryQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+export type GetBlogByCategoryQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
 
 export type GetBlogByCategoryInCategoryPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type GetBlogByCategoryInCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+export type GetBlogByCategoryInCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
 
 export type GetBlogByCategoryInSubCategoryPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type GetBlogByCategoryInSubCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+export type GetBlogByCategoryInSubCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
 
 export type GetBlogDetailQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type GetBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, content?: string | null, description?: string | null, meta_title?: string | null, related_article?: { __typename?: 'ArticleRelationResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+export type GetBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, content?: string | null, description?: string | null, meta_title?: string | null, related_article?: { __typename?: 'ArticleRelationResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null };
 
 export type GetListCategoryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1468,7 +1373,7 @@ export type GetParentCategoriesInCategoryPageQuery = { __typename?: 'Query', cat
 export type GetRecentBlogListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetRecentBlogListQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, description?: string | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
+export type GetRecentBlogListQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, description?: string | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }> } | null };
 
 export type GetRecentBlogListInBlogDetailQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1488,7 +1393,7 @@ export type LoadMoreBlogQueryVariables = Exact<{
 }>;
 
 
-export type LoadMoreBlogQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
+export type LoadMoreBlogQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null } | null }> } | null };
 
 
 export const CategoriesListDocument = gql`
@@ -1595,89 +1500,6 @@ export function useDataArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type DataArticlesQueryHookResult = ReturnType<typeof useDataArticlesQuery>;
 export type DataArticlesLazyQueryHookResult = ReturnType<typeof useDataArticlesLazyQuery>;
 export type DataArticlesQueryResult = Apollo.QueryResult<DataArticlesQuery, DataArticlesQueryVariables>;
-export const DataBlogDocument = gql`
-    query dataBlog {
-  blogs {
-    data {
-      attributes {
-        title
-        description
-        dateTime
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useDataBlogQuery__
- *
- * To run a query within a React component, call `useDataBlogQuery` and pass it any options that fit your needs.
- * When your component renders, `useDataBlogQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useDataBlogQuery({
- *   variables: {
- *   },
- * });
- */
-export function useDataBlogQuery(baseOptions?: Apollo.QueryHookOptions<DataBlogQuery, DataBlogQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<DataBlogQuery, DataBlogQueryVariables>(DataBlogDocument, options);
-      }
-export function useDataBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DataBlogQuery, DataBlogQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<DataBlogQuery, DataBlogQueryVariables>(DataBlogDocument, options);
-        }
-export type DataBlogQueryHookResult = ReturnType<typeof useDataBlogQuery>;
-export type DataBlogLazyQueryHookResult = ReturnType<typeof useDataBlogLazyQuery>;
-export type DataBlogQueryResult = Apollo.QueryResult<DataBlogQuery, DataBlogQueryVariables>;
-export const DataLodashDocument = gql`
-    query dataLodash {
-  lodashes {
-    data {
-      attributes {
-        title
-        label
-        description
-        content
-        labelOfJS
-        contentOfJS
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useDataLodashQuery__
- *
- * To run a query within a React component, call `useDataLodashQuery` and pass it any options that fit your needs.
- * When your component renders, `useDataLodashQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useDataLodashQuery({
- *   variables: {
- *   },
- * });
- */
-export function useDataLodashQuery(baseOptions?: Apollo.QueryHookOptions<DataLodashQuery, DataLodashQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<DataLodashQuery, DataLodashQueryVariables>(DataLodashDocument, options);
-      }
-export function useDataLodashLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DataLodashQuery, DataLodashQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<DataLodashQuery, DataLodashQueryVariables>(DataLodashDocument, options);
-        }
-export type DataLodashQueryHookResult = ReturnType<typeof useDataLodashQuery>;
-export type DataLodashLazyQueryHookResult = ReturnType<typeof useDataLodashLazyQuery>;
-export type DataLodashQueryResult = Apollo.QueryResult<DataLodashQuery, DataLodashQueryVariables>;
 export const GetAllBlogsDocument = gql`
     query getAllBlogs {
   articles {

@@ -17,8 +17,18 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex lg:py-1 lg:px-12 justify-between border-b border-grayBottom sticky top-0 bg-white z-40  shadow-sm">
-        <div className="py-3 px-3 flex lg:justify-around lg:items-center lg:gap-x-6 md:gap-x-4 ">
+      <div className="flex lg:py-1 lg:px-12 justify-between  sticky top-0 bg-white z-40  shadow-sm">
+        <div className="py-4 px-3 flex lg:justify-around lg:items-center lg:gap-x-6 md:gap-x-4 ">
+          <Link href="/">
+            <span className="w-24 cursor-pointer">
+              <Image
+                src="https://res.cloudinary.com/dv8kkrvvw/image/upload/v1685202507/person_cf54e75887.png"
+                width={40}
+                height={20}
+                alt="Logo"
+              />
+            </span>
+          </Link>
           {data?.menus?.data?.map((item: itemType) => (
             <Link
               passHref={true}

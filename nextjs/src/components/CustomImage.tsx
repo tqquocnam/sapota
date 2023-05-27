@@ -8,7 +8,12 @@ interface IImageProps {
   sizes?: string | undefined;
 }
 
-const Image = ({ image, widthCustom, heightCustom, sizes }: IImageProps) => {
+const CustomImage = ({
+  image,
+  widthCustom,
+  heightCustom,
+  sizes,
+}: IImageProps) => {
   if (image?.data?.attributes) {
     const { url, alternativeText, width, height } = image?.data?.attributes;
 
@@ -24,6 +29,7 @@ const Image = ({ image, widthCustom, heightCustom, sizes }: IImageProps) => {
 
     return (
       <NextImage
+        className="rounded-md"
         sizes={sizes}
         width={widthCustom || width || 1}
         height={heightCustom || height || 1}
@@ -36,4 +42,4 @@ const Image = ({ image, widthCustom, heightCustom, sizes }: IImageProps) => {
   }
 };
 
-export default Image;
+export default CustomImage;

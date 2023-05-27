@@ -3,16 +3,19 @@ import type { AppProps } from "next/app";
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "libs/apolloClient";
 import Layout from "src/components/Layout";
+import { AppContext } from "@/context/GlobalContext";
 export default function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps);
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Layout>
-        <div className="my-16 mx-4 sm:mx-auto max-w-1200">
-          <Component {...pageProps} />
-        </div>
-      </Layout>
+      <AppContext>
+        <Layout>
+          <div className="pt-12 md:px-0 px-3 sm:mx-auto md:max-w-7xl">
+            <Component {...pageProps} />
+          </div>
+        </Layout>
+      </AppContext>
     </ApolloProvider>
   );
 }

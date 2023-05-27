@@ -1,6 +1,5 @@
 const KEYS = {
   HOME_PAGE: "/",
-  CLAIM_PAGE: "/lodash",
   ABOUT_US_PAGE: "/resume",
   KNOWLEDGE_PAGE: "/kien-thuc",
   FORM_HEADER: {

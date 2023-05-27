@@ -3,7 +3,7 @@ import { ArticleEntity, UploadFileEntityResponse } from "generated/graphql";
 import ChevronLeft from "public/icon/chevron-left-black.png";
 import ChevronRight from "public/icon/chevron-right-black.png";
 import Link from "next/link";
-import CustomImage from "./Image";
+import CustomImage from "./CustomImage";
 import Tag from "./Tag";
 import { utils } from "src/utils";
 import { VALUES } from "../contanst";

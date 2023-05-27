@@ -3,8 +3,8 @@ import Image from "next/image";
 import ChevronDown from "public/icon/chevron-down.png";
 import { UploadFileEntityResponse } from "generated/graphql";
 import Tag from "./Tag";
+import CustomImage from "./CustomImage";
 import { IBlogCategories } from "@/pages/kien-thuc";
-import CustomImage from "./Image";
 
 interface IProps {
   data: IBlogCategories;
@@ -14,16 +14,16 @@ interface IProps {
 
 const BlogCategoryList = ({ data, loadMore, total }: IProps) => {
   return (
-    <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-      <div className="text-center">
+    <div className="mb-8 md:mb-16">
+      <div className="text-center pb-6">
         <p className="text-xl font-semibold text-ink sm:text-2xl lg:text-3xl">
           {data.name}
         </p>
       </div>
-      <div className="flex flex-wrap justify-start gap-2 sm:gap-10 sm:gap-y-6">
+      <div className="flex flex-wrap justify-between gap-3 md:gap-4 gap-y-0">
         {data?.data?.map((item) => (
           <article
-            className="basis-47 sm:basis-22 mt-6"
+            className="md:basis-24 basis-47 mt-6"
             key={item?.attributes?.slug}
           >
             {item?.attributes?.thumbnail && item?.attributes?.slug ? (
@@ -33,27 +33,27 @@ const BlogCategoryList = ({ data, loadMore, total }: IProps) => {
                     image={
                       item?.attributes?.thumbnail as UploadFileEntityResponse
                     }
-                    widthCustom={270}
-                    heightCustom={180}
+                    widthCustom={310}
+                    heightCustom={100}
                   />
                 </div>
               </Link>
             ) : (
               ""
             )}
-            <div className="mt-4 flex gap-2 flex-wrap">
+            <div className="pt-2 flex gap-2 flex-wrap">
               {item.attributes?.categories?.data?.map((category) => (
                 <Tag
                   key={category?.attributes?.slug}
                   name={category?.attributes?.name || ""}
                   secondary={false}
-                  slug={""} // slug={utils.mapSlugInTag(category)}
+                  slug={""}
                 />
               ))}
             </div>
             {item?.attributes?.slug ? (
               <Link passHref={true} href={item?.attributes?.slug}>
-                <div className="mt-4 cursor-pointer">
+                <div className="pt-2 cursor-pointer">
                   <h2 className="font-semibold h-72 text-ink text-base multi-line-ellipsis-3">
                     {item?.attributes?.title}
                   </h2>

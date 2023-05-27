@@ -62,7 +62,7 @@ const KnowledgePage = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {recentBlogList ? <BlogRecentList data={recentBlogList} /> : ""}
-      <div className="mt-24">
+      <div className="pt-24">
         {blogListData?.map((blogList) => {
           if (blogList.data.length) {
             return (

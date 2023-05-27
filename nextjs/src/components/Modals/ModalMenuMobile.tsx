@@ -28,7 +28,7 @@ export const ModalMenuMobile = ({ onClose, items }: IComp) => {
                 pathname === item.attributes?.link
                   ? "text-branding"
                   : "text-inkLighter"
-              } text-inkLighter font-semibold cursor-pointer text-lg`}
+              } text-inkLighter font-semibold cursor-pointer text-sm`}
             >
               {item?.attributes?.title}
             </p>

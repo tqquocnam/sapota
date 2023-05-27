@@ -9,7 +9,7 @@ type IComp = {
 
 export const ModalWrapper = ({
   isVisible,
-  className = "fixed top-[52px] bottom-0 left-0 right-0 bg-white z-50",
+  className = "fixed top-[74px] bottom-0 left-0 right-0 bg-white z-50",
   children,
 }: IComp) => {
   useEffect(() => {

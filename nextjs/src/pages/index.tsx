@@ -31,7 +31,7 @@ export default function Home() {
         description={siteMetadata.description}
       />
 
-      <div className="grid md:px-36 md:pt-12">
+      <div className="grid">
         <span
           className="bg-gradient-to-r from-blue-800 to-indigo-900
     mb-8 bg-clip-text text-6xl font-extrabold leading-[60px] tracking-tight text-transparent md:text-7xl md:leading-[86px]"

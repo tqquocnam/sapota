@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_libraries",
+  "info": {
+    "singularName": "media-library",
+    "pluralName": "media-libraries",
+    "displayName": "Media Library"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "page": {
+      "type": "string"
+    },
+    "file_type": {
+      "type": "string"
+    },
+    "order": {
+      "type": "biginteger"
+    },
+    "content": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

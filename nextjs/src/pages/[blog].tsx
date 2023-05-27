@@ -21,7 +21,8 @@ import markdownToHTML from "libs/markdownToHTML";
 import { BlogContent } from "@/components/BlogContent";
 import { isJSONString } from "libs/helpers/isJSONString";
 import { useAppContext } from "@/context/GlobalContext";
-import CustomImage from "../components/Image";
+import CustomImage from "../components/CustomImage";
+import { FacebookShareButton, EmailShareButton, EmailIcon } from "next-share";
 
 interface IProps {
   article: ArticleEntity[];
@@ -71,39 +72,6 @@ const BlogDetail = ({
       /> */}
       <div className="flex flex-col	sm:flex-row gap-x-6">
         <article className="flex-auto md:w-2/3">
-          {/* <div className="flex gap-x-4">
-            <FacebookShareButton
-              url={`https://${process.env.NEXT_PUBLIC_DOMAIN}/${router.query.blog}`}
-              quote={blogDetail?.title || ""}
-            >
-              <Image
-                src="https://home.cdn.papaya.services/fb_link_b24440cfbb.png?updated_at=2022-07-21T09:55:03.120Z"
-                alt="facebook_link"
-                width={40}
-                height={40}
-              />
-            </FacebookShareButton>
-
-            {/*<Image*/}
-          {/*  src="https://home.cdn.papaya.services/zalo_link_c51eb83ca4.png?updated_at=2022-07-21T09:55:03.076Z"*/}
-          {/*  alt="facebook_link"*/}
-          {/*  width={40}*/}
-          {/*  height={40}*/}
-          {/*/>*/}
-
-          {/* <EmailShareButton
-              url={`https://${process.env.NEXT_PUBLIC_DOMAIN}/${router.query.blog}`}
-              subject={blogDetail?.title || ""}
-            >
-              <Image
-                src="https://home.cdn.papaya.services/mail_link_60b92ddac3.png?updated_at=2022-07-21T09:55:03.105Z"
-                alt="email_link"
-                width={40}
-                height={40}
-              />
-            </EmailShareButton>
-          </div> */}
-
           <div className="pt-6">
             <h1 className="text-xl	sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-ink tracking-wide">
               {blogDetail?.title}
@@ -159,10 +127,7 @@ const BlogDetail = ({
                         <Link href={item?.attributes?.slug}>
                           <div className="cursor-pointer">
                             <CustomImage
-                              image={
-                                item?.attributes
-                                  ?.thumbnail as UploadFileEntityResponse
-                              }
+                              image={item?.attributes?.thumbnail}
                               widthCustom={540}
                               heightCustom={360}
                             />

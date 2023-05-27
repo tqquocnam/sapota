@@ -19,8 +19,8 @@
 }
 
 .markdown a {
-  color: #ED1B55 !important;
-  /* @apply text-info; */
+  color: #434190 !important;
+  @apply text-info;
 }
 
 .markdown h1 {
