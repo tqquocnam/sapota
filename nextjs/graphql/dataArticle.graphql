@@ -1,0 +1,29 @@
+query dataArticles {
+  articles {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}

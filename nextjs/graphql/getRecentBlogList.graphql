@@ -1,0 +1,38 @@
+query getRecentBlogList {
+  articles(sort: "createdAt:desc", pagination: { limit: 5 }) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        description
+        categories {
+          data {
+            attributes {
+              name
+              slug
+              category {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}

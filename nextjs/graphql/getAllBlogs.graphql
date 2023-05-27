@@ -1,0 +1,9 @@
+query getAllBlogs {
+  articles {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}

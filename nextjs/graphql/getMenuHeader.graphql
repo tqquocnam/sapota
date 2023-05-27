@@ -1,0 +1,12 @@
+query getMenuHeader {
+  menus(filters: { type: { eq: "header" } }) {
+    data {
+      attributes {
+        title
+        link
+        order
+        type
+      }
+    }
+  }
+}

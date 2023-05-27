@@ -5,29 +5,39 @@ import Close from "public/icon/close.png";
 import Menu from "public/icon/menu.png";
 import { ModalWrapper } from "./Modals/ModalWrapper";
 import { ModalMenuMobile } from "./Modals/ModalMenuMobile";
+import { GetMenuHeaderQuery, useGetMenuHeaderQuery } from "generated/graphql";
+import { useRouter } from "next/router";
+
+type itemType = NonNullable<GetMenuHeaderQuery["menus"]>["data"][number];
 
 const Header = () => {
+  const { pathname } = useRouter();
+  const { data } = useGetMenuHeaderQuery();
   const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
 
   return (
     <>
-      <div className="flex lg:py-1 lg:px-12 justify-between border-b border-grayBottom sticky top-0 bg-white z-40">
+      <div className="flex lg:py-1 lg:px-12 justify-between border-b border-grayBottom sticky top-0 bg-white z-40  shadow-sm">
         <div className="py-3 px-3 flex lg:justify-around lg:items-center lg:gap-x-6 md:gap-x-4 ">
-          <Link href="/">
-            <span className="font-medium text-lg">tqquocnam*</span>
-          </Link>
-
-          <div className="hidden md:block lg:block pt-1">
-            <Link href="/lodash">
-              <span className="px-6 text-lg">lodash</span>
+          {data?.menus?.data?.map((item: itemType) => (
+            <Link
+              passHref={true}
+              key={item?.attributes?.order}
+              href={item.attributes?.link || ""}
+            >
+              <div className="hidden md:block lg:block pt-1">
+                <p
+                  className={`${
+                    pathname === item.attributes?.link
+                      ? "text-branding"
+                      : "text-inkLighter"
+                  } font-semibold cursor-pointer lg:text-base md:text-sm`}
+                >
+                  {item?.attributes?.title}
+                </p>
+              </div>
             </Link>
-            <Link href="/resume">
-              <span className="px-6 text-lg">resume</span>
-            </Link>
-            <Link href="/blog">
-              <span className="px-6 text-lg">blog</span>
-            </Link>
-          </div>
+          ))}
         </div>
         <div className="flex items-center xl:pr-3">
           <div />
@@ -48,6 +58,7 @@ const Header = () => {
           onClose={() => {
             setIsVisibleMenu(false);
           }}
+          items={data?.menus?.data || []}
         />
       </ModalWrapper>
     </>

@@ -28,7 +28,7 @@
       "type": "richtext"
     },
     "description": {
-      "type": "text"
+      "type": "string"
     }
   }
 }

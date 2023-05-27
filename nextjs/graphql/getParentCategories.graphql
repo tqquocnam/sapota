@@ -1,0 +1,10 @@
+query getParentCategories {
+  categories(filters: { category: { name: { eq: null } } }) {
+    data {
+      attributes {
+        name
+        slug
+      }
+    }
+  }
+}

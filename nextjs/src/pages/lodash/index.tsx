@@ -10,7 +10,7 @@ const LodashPage = () => {
   return (
     <div>
       <Head>
-        <title>lodash</title>
+        <title>Lodash | Sapota</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="grid md:justify-items-center">

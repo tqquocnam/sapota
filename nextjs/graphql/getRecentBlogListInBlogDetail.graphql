@@ -1,0 +1,10 @@
+query getRecentBlogListInBlogDetail {
+  articles(sort: "createdAt:desc", pagination: { limit: 5 }) {
+    data {
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+}

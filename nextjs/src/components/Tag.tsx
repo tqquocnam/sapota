@@ -1,11 +1,26 @@
 import Link from "next/link";
-import kebabCase from "utils/kebabCase";
 
-const Tag = ({ text }: { text: any }) => {
+const Tag = ({
+  name,
+  slug,
+  secondary,
+  count,
+}: {
+  name: string;
+  secondary: boolean;
+  slug: string;
+  count?: number;
+}) => {
   return (
-    <Link href={`/tags/${kebabCase(text)}`}>
-      <div className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-        {text.split(" ").join("-")}
+    <Link passHref={true} href={slug}>
+      <div
+        className={`w-fit rounded-md sm:rounded-lg cursor-pointer text-xs sm:text-sm ${
+          secondary
+            ? "px-2 sm:px-4 py-1 text-inkLighter bg-white border border-solid border-inkLighter"
+            : "px-1 sm:px-2 py-0.5 text-white bg-ink "
+        }`}
+      >
+        {name} {count ? <span>({count})</span> : ""}
       </div>
     </Link>
   );

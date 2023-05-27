@@ -1,0 +1,45 @@
+.markdown {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-4;
+}
+
+.markdown img {
+  width: 100% !important;
+  height: auto;
+}
+
+.markdown a img {
+  width: auto !important;
+}
+
+.markdown a {
+  color: #ED1B55 !important;
+  /* @apply text-info; */
+}
+
+.markdown h1 {
+  @apply text-3xl mt-6 mb-4 leading-snug font-semibold;
+}
+
+.markdown h2 {
+  @apply text-2xl mt-6 mb-4 leading-snug font-semibold;
+}
+
+.markdown h3 {
+  @apply text-xl mt-6 mb-4 leading-snug font-semibold;
+}
+
+.markdown h6 {
+  @apply text-sm italic text-center;
+}
+
+.markdown ul {
+  padding-left: 20px;
+  list-style: disc;
+}

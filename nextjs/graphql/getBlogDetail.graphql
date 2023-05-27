@@ -1,0 +1,61 @@
+query getBlogDetail($slug: String!) {
+  articles(filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        title
+        slug
+        related_article {
+          data {
+            attributes {
+              title
+              slug
+              createdAt
+              categories {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+              thumbnail {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        categories {
+          data {
+            attributes {
+              name
+              slug
+              category {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+        createdAt
+        thumbnail {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        content
+        description
+        meta_title
+      }
+    }
+  }
+}

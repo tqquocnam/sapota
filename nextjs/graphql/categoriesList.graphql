@@ -1,0 +1,17 @@
+query categoriesList {
+  categories {
+    data {
+      attributes {
+        name
+        slug
+        articles {
+          data {
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}

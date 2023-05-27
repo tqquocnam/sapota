@@ -17,7 +17,106 @@ export type Scalars = {
   Float: { input: number; output: number; }
   DateTime: { input: any; output: any; }
   JSON: { input: any; output: any; }
+  Long: { input: any; output: any; }
   Upload: { input: any; output: any; }
+};
+
+export type Article = {
+  __typename?: 'Article';
+  categories?: Maybe<CategoryRelationResponseCollection>;
+  content?: Maybe<Scalars['String']['output']>;
+  cover?: Maybe<UploadFileRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  meta_title?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  related_article?: Maybe<ArticleRelationResponseCollection>;
+  slug?: Maybe<Scalars['String']['output']>;
+  thumbnail?: Maybe<UploadFileRelationResponseCollection>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type ArticleCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type ArticleCoverArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type ArticleRelated_ArticleArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type ArticleThumbnailArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ArticleEntity = {
+  __typename?: 'ArticleEntity';
+  attributes?: Maybe<Article>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type ArticleEntityResponse = {
+  __typename?: 'ArticleEntityResponse';
+  data?: Maybe<ArticleEntity>;
+};
+
+export type ArticleEntityResponseCollection = {
+  __typename?: 'ArticleEntityResponseCollection';
+  data: Array<ArticleEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ArticleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
+  categories?: InputMaybe<CategoryFiltersInput>;
+  content?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  meta_title?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ArticleFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  related_article?: InputMaybe<ArticleFiltersInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ArticleInput = {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  cover?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  meta_title?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  related_article?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  thumbnail?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ArticleRelationResponseCollection = {
+  __typename?: 'ArticleRelationResponseCollection';
+  data: Array<ArticleEntity>;
 };
 
 export type Blog = {
@@ -91,6 +190,83 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type Category = {
+  __typename?: 'Category';
+  articles?: Maybe<ArticleRelationResponseCollection>;
+  categories?: Maybe<CategoryRelationResponseCollection>;
+  category?: Maybe<CategoryEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Long']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type CategoryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CategoryCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CategoryEntity = {
+  __typename?: 'CategoryEntity';
+  attributes?: Maybe<Category>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type CategoryEntityResponse = {
+  __typename?: 'CategoryEntityResponse';
+  data?: Maybe<CategoryEntity>;
+};
+
+export type CategoryEntityResponseCollection = {
+  __typename?: 'CategoryEntityResponseCollection';
+  data: Array<CategoryEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type CategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
+  articles?: InputMaybe<ArticleFiltersInput>;
+  categories?: InputMaybe<CategoryFiltersInput>;
+  category?: InputMaybe<CategoryFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<CategoryFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
+  order?: InputMaybe<LongFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type CategoryInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  category?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Long']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CategoryRelationResponseCollection = {
+  __typename?: 'CategoryRelationResponseCollection';
+  data: Array<CategoryEntity>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -145,7 +321,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Blog | I18NLocale | Lodash | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | Blog | Category | I18NLocale | Lodash | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -311,20 +487,100 @@ export type LodashInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type LongFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
+  contains?: InputMaybe<Scalars['Long']['input']>;
+  containsi?: InputMaybe<Scalars['Long']['input']>;
+  endsWith?: InputMaybe<Scalars['Long']['input']>;
+  eq?: InputMaybe<Scalars['Long']['input']>;
+  eqi?: InputMaybe<Scalars['Long']['input']>;
+  gt?: InputMaybe<Scalars['Long']['input']>;
+  gte?: InputMaybe<Scalars['Long']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
+  lt?: InputMaybe<Scalars['Long']['input']>;
+  lte?: InputMaybe<Scalars['Long']['input']>;
+  ne?: InputMaybe<Scalars['Long']['input']>;
+  not?: InputMaybe<LongFilterInput>;
+  notContains?: InputMaybe<Scalars['Long']['input']>;
+  notContainsi?: InputMaybe<Scalars['Long']['input']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
+  notNull?: InputMaybe<Scalars['Boolean']['input']>;
+  null?: InputMaybe<Scalars['Boolean']['input']>;
+  or?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>;
+  startsWith?: InputMaybe<Scalars['Long']['input']>;
+};
+
+export type Menu = {
+  __typename?: 'Menu';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  link?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Long']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type MenuEntity = {
+  __typename?: 'MenuEntity';
+  attributes?: Maybe<Menu>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type MenuEntityResponse = {
+  __typename?: 'MenuEntityResponse';
+  data?: Maybe<MenuEntity>;
+};
+
+export type MenuEntityResponseCollection = {
+  __typename?: 'MenuEntityResponseCollection';
+  data: Array<MenuEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type MenuFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  link?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<MenuFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
+  order?: InputMaybe<LongFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  type?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type MenuInput = {
+  link?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Long']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createArticle?: Maybe<ArticleEntityResponse>;
   createBlog?: Maybe<BlogEntityResponse>;
+  createCategory?: Maybe<CategoryEntityResponse>;
   createLodash?: Maybe<LodashEntityResponse>;
+  createMenu?: Maybe<MenuEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteArticle?: Maybe<ArticleEntityResponse>;
   deleteBlog?: Maybe<BlogEntityResponse>;
+  deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteLodash?: Maybe<LodashEntityResponse>;
+  deleteMenu?: Maybe<MenuEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -342,9 +598,12 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateArticle?: Maybe<ArticleEntityResponse>;
   updateBlog?: Maybe<BlogEntityResponse>;
+  updateCategory?: Maybe<CategoryEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateLodash?: Maybe<LodashEntityResponse>;
+  updateMenu?: Maybe<MenuEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -362,13 +621,28 @@ export type MutationChangePasswordArgs = {
 };
 
 
+export type MutationCreateArticleArgs = {
+  data: ArticleInput;
+};
+
+
 export type MutationCreateBlogArgs = {
   data: BlogInput;
 };
 
 
+export type MutationCreateCategoryArgs = {
+  data: CategoryInput;
+};
+
+
 export type MutationCreateLodashArgs = {
   data: LodashInput;
+};
+
+
+export type MutationCreateMenuArgs = {
+  data: MenuInput;
 };
 
 
@@ -392,12 +666,27 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
+export type MutationDeleteArticleArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
 export type MutationDeleteBlogArgs = {
   id: Scalars['ID']['input'];
 };
 
 
+export type MutationDeleteCategoryArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
 export type MutationDeleteLodashArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteMenuArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -462,8 +751,20 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateArticleArgs = {
+  data: ArticleInput;
+  id: Scalars['ID']['input'];
+};
+
+
 export type MutationUpdateBlogArgs = {
   data: BlogInput;
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationUpdateCategoryArgs = {
+  data: CategoryInput;
   id: Scalars['ID']['input'];
 };
 
@@ -476,6 +777,12 @@ export type MutationUpdateFileInfoArgs = {
 
 export type MutationUpdateLodashArgs = {
   data: LodashInput;
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationUpdateMenuArgs = {
+  data: MenuInput;
   id: Scalars['ID']['input'];
 };
 
@@ -534,13 +841,19 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  article?: Maybe<ArticleEntityResponse>;
+  articles?: Maybe<ArticleEntityResponseCollection>;
   blog?: Maybe<BlogEntityResponse>;
   blogs?: Maybe<BlogEntityResponseCollection>;
+  categories?: Maybe<CategoryEntityResponseCollection>;
+  category?: Maybe<CategoryEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   lodash?: Maybe<LodashEntityResponse>;
   lodashes?: Maybe<LodashEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  menu?: Maybe<MenuEntityResponse>;
+  menus?: Maybe<MenuEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -549,6 +862,19 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryArticleArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -562,6 +888,19 @@ export type QueryBlogsArgs = {
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryCategoryArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 
@@ -584,6 +923,19 @@ export type QueryLodashArgs = {
 
 export type QueryLodashesArgs = {
   filters?: InputMaybe<LodashFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryMenuArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryMenusArgs = {
+  filters?: InputMaybe<MenuFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1039,6 +1391,16 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type CategoriesListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CategoriesListQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, articles?: { __typename?: 'ArticleRelationResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null } | null }> } | null } | null }> } | null };
+
+export type DataArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DataArticlesQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
+
 export type DataBlogQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1049,7 +1411,159 @@ export type DataLodashQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type DataLodashQuery = { __typename?: 'Query', lodashes?: { __typename?: 'LodashEntityResponseCollection', data: Array<{ __typename?: 'LodashEntity', attributes?: { __typename?: 'Lodash', title?: string | null, label?: string | null, description?: string | null, content?: string | null, labelOfJS?: string | null, contentOfJS?: string | null } | null }> } | null };
 
+export type GetAllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type GetAllBlogsQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', slug?: string | null } | null }> } | null };
+
+export type GetBlogByCategoryQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+  limit: Scalars['Int']['input'];
+}>;
+
+
+export type GetBlogByCategoryQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
+export type GetBlogDetailQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, content?: string | null, description?: string | null, meta_title?: string | null, related_article?: { __typename?: 'ArticleRelationResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+
+export type GetMenuHeaderQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMenuHeaderQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', attributes?: { __typename?: 'Menu', title?: string | null, link?: string | null, order?: any | null, type?: string | null } | null }> } | null };
+
+export type GetParentCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetParentCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null };
+
+export type GetRecentBlogListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetRecentBlogListQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, description?: string | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
+
+export type GetRecentBlogListInBlogDetailQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetRecentBlogListInBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null } | null }> } | null };
+
+export type LoadMoreBlogQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+  page: Scalars['Int']['input'];
+}>;
+
+
+export type LoadMoreBlogQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }> } | null };
+
+
+export const CategoriesListDocument = gql`
+    query categoriesList {
+  categories {
+    data {
+      attributes {
+        name
+        slug
+        articles {
+          data {
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCategoriesListQuery__
+ *
+ * To run a query within a React component, call `useCategoriesListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesListQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesListQuery, CategoriesListQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CategoriesListQuery, CategoriesListQueryVariables>(CategoriesListDocument, options);
+      }
+export function useCategoriesListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesListQuery, CategoriesListQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CategoriesListQuery, CategoriesListQueryVariables>(CategoriesListDocument, options);
+        }
+export type CategoriesListQueryHookResult = ReturnType<typeof useCategoriesListQuery>;
+export type CategoriesListLazyQueryHookResult = ReturnType<typeof useCategoriesListLazyQuery>;
+export type CategoriesListQueryResult = Apollo.QueryResult<CategoriesListQuery, CategoriesListQueryVariables>;
+export const DataArticlesDocument = gql`
+    query dataArticles {
+  articles {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useDataArticlesQuery__
+ *
+ * To run a query within a React component, call `useDataArticlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDataArticlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDataArticlesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useDataArticlesQuery(baseOptions?: Apollo.QueryHookOptions<DataArticlesQuery, DataArticlesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<DataArticlesQuery, DataArticlesQueryVariables>(DataArticlesDocument, options);
+      }
+export function useDataArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DataArticlesQuery, DataArticlesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<DataArticlesQuery, DataArticlesQueryVariables>(DataArticlesDocument, options);
+        }
+export type DataArticlesQueryHookResult = ReturnType<typeof useDataArticlesQuery>;
+export type DataArticlesLazyQueryHookResult = ReturnType<typeof useDataArticlesLazyQuery>;
+export type DataArticlesQueryResult = Apollo.QueryResult<DataArticlesQuery, DataArticlesQueryVariables>;
 export const DataBlogDocument = gql`
     query dataBlog {
   blogs {
@@ -1133,3 +1647,451 @@ export function useDataLodashLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type DataLodashQueryHookResult = ReturnType<typeof useDataLodashQuery>;
 export type DataLodashLazyQueryHookResult = ReturnType<typeof useDataLodashLazyQuery>;
 export type DataLodashQueryResult = Apollo.QueryResult<DataLodashQuery, DataLodashQueryVariables>;
+export const GetAllBlogsDocument = gql`
+    query getAllBlogs {
+  articles {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllBlogsQuery__
+ *
+ * To run a query within a React component, call `useGetAllBlogsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllBlogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllBlogsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllBlogsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllBlogsQuery, GetAllBlogsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllBlogsQuery, GetAllBlogsQueryVariables>(GetAllBlogsDocument, options);
+      }
+export function useGetAllBlogsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllBlogsQuery, GetAllBlogsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllBlogsQuery, GetAllBlogsQueryVariables>(GetAllBlogsDocument, options);
+        }
+export type GetAllBlogsQueryHookResult = ReturnType<typeof useGetAllBlogsQuery>;
+export type GetAllBlogsLazyQueryHookResult = ReturnType<typeof useGetAllBlogsLazyQuery>;
+export type GetAllBlogsQueryResult = Apollo.QueryResult<GetAllBlogsQuery, GetAllBlogsQueryVariables>;
+export const GetBlogByCategoryDocument = gql`
+    query getBlogByCategory($slug: String!, $limit: Int!) {
+  articles(
+    filters: {categories: {slug: {eq: $slug}}}
+    sort: "createdAt:desc"
+    pagination: {limit: $limit}
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBlogByCategoryQuery__
+ *
+ * To run a query within a React component, call `useGetBlogByCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlogByCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlogByCategoryQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useGetBlogByCategoryQuery(baseOptions: Apollo.QueryHookOptions<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>(GetBlogByCategoryDocument, options);
+      }
+export function useGetBlogByCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>(GetBlogByCategoryDocument, options);
+        }
+export type GetBlogByCategoryQueryHookResult = ReturnType<typeof useGetBlogByCategoryQuery>;
+export type GetBlogByCategoryLazyQueryHookResult = ReturnType<typeof useGetBlogByCategoryLazyQuery>;
+export type GetBlogByCategoryQueryResult = Apollo.QueryResult<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>;
+export const GetBlogDetailDocument = gql`
+    query getBlogDetail($slug: String!) {
+  articles(filters: {slug: {eq: $slug}}) {
+    data {
+      attributes {
+        title
+        slug
+        related_article {
+          data {
+            attributes {
+              title
+              slug
+              createdAt
+              categories {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+              thumbnail {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        categories {
+          data {
+            attributes {
+              name
+              slug
+              category {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+        createdAt
+        thumbnail {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        content
+        description
+        meta_title
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBlogDetailQuery__
+ *
+ * To run a query within a React component, call `useGetBlogDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlogDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlogDetailQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetBlogDetailQuery(baseOptions: Apollo.QueryHookOptions<GetBlogDetailQuery, GetBlogDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBlogDetailQuery, GetBlogDetailQueryVariables>(GetBlogDetailDocument, options);
+      }
+export function useGetBlogDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlogDetailQuery, GetBlogDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBlogDetailQuery, GetBlogDetailQueryVariables>(GetBlogDetailDocument, options);
+        }
+export type GetBlogDetailQueryHookResult = ReturnType<typeof useGetBlogDetailQuery>;
+export type GetBlogDetailLazyQueryHookResult = ReturnType<typeof useGetBlogDetailLazyQuery>;
+export type GetBlogDetailQueryResult = Apollo.QueryResult<GetBlogDetailQuery, GetBlogDetailQueryVariables>;
+export const GetMenuHeaderDocument = gql`
+    query getMenuHeader {
+  menus(filters: {type: {eq: "header"}}) {
+    data {
+      attributes {
+        title
+        link
+        order
+        type
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetMenuHeaderQuery__
+ *
+ * To run a query within a React component, call `useGetMenuHeaderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMenuHeaderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMenuHeaderQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetMenuHeaderQuery(baseOptions?: Apollo.QueryHookOptions<GetMenuHeaderQuery, GetMenuHeaderQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMenuHeaderQuery, GetMenuHeaderQueryVariables>(GetMenuHeaderDocument, options);
+      }
+export function useGetMenuHeaderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMenuHeaderQuery, GetMenuHeaderQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMenuHeaderQuery, GetMenuHeaderQueryVariables>(GetMenuHeaderDocument, options);
+        }
+export type GetMenuHeaderQueryHookResult = ReturnType<typeof useGetMenuHeaderQuery>;
+export type GetMenuHeaderLazyQueryHookResult = ReturnType<typeof useGetMenuHeaderLazyQuery>;
+export type GetMenuHeaderQueryResult = Apollo.QueryResult<GetMenuHeaderQuery, GetMenuHeaderQueryVariables>;
+export const GetParentCategoriesDocument = gql`
+    query getParentCategories {
+  categories(filters: {category: {name: {eq: null}}}) {
+    data {
+      attributes {
+        name
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetParentCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetParentCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetParentCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetParentCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetParentCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>(GetParentCategoriesDocument, options);
+      }
+export function useGetParentCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>(GetParentCategoriesDocument, options);
+        }
+export type GetParentCategoriesQueryHookResult = ReturnType<typeof useGetParentCategoriesQuery>;
+export type GetParentCategoriesLazyQueryHookResult = ReturnType<typeof useGetParentCategoriesLazyQuery>;
+export type GetParentCategoriesQueryResult = Apollo.QueryResult<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>;
+export const GetRecentBlogListDocument = gql`
+    query getRecentBlogList {
+  articles(sort: "createdAt:desc", pagination: {limit: 5}) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        description
+        categories {
+          data {
+            attributes {
+              name
+              slug
+              category {
+                data {
+                  attributes {
+                    name
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetRecentBlogListQuery__
+ *
+ * To run a query within a React component, call `useGetRecentBlogListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRecentBlogListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRecentBlogListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetRecentBlogListQuery(baseOptions?: Apollo.QueryHookOptions<GetRecentBlogListQuery, GetRecentBlogListQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRecentBlogListQuery, GetRecentBlogListQueryVariables>(GetRecentBlogListDocument, options);
+      }
+export function useGetRecentBlogListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRecentBlogListQuery, GetRecentBlogListQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRecentBlogListQuery, GetRecentBlogListQueryVariables>(GetRecentBlogListDocument, options);
+        }
+export type GetRecentBlogListQueryHookResult = ReturnType<typeof useGetRecentBlogListQuery>;
+export type GetRecentBlogListLazyQueryHookResult = ReturnType<typeof useGetRecentBlogListLazyQuery>;
+export type GetRecentBlogListQueryResult = Apollo.QueryResult<GetRecentBlogListQuery, GetRecentBlogListQueryVariables>;
+export const GetRecentBlogListInBlogDetailDocument = gql`
+    query getRecentBlogListInBlogDetail {
+  articles(sort: "createdAt:desc", pagination: {limit: 5}) {
+    data {
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetRecentBlogListInBlogDetailQuery__
+ *
+ * To run a query within a React component, call `useGetRecentBlogListInBlogDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRecentBlogListInBlogDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetRecentBlogListInBlogDetailQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetRecentBlogListInBlogDetailQuery(baseOptions?: Apollo.QueryHookOptions<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>(GetRecentBlogListInBlogDetailDocument, options);
+      }
+export function useGetRecentBlogListInBlogDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>(GetRecentBlogListInBlogDetailDocument, options);
+        }
+export type GetRecentBlogListInBlogDetailQueryHookResult = ReturnType<typeof useGetRecentBlogListInBlogDetailQuery>;
+export type GetRecentBlogListInBlogDetailLazyQueryHookResult = ReturnType<typeof useGetRecentBlogListInBlogDetailLazyQuery>;
+export type GetRecentBlogListInBlogDetailQueryResult = Apollo.QueryResult<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>;
+export const LoadMoreBlogDocument = gql`
+    query loadMoreBlog($slug: String!, $page: Int!) {
+  articles(
+    filters: {categories: {slug: {eq: $slug}}}
+    sort: "createdAt:desc"
+    pagination: {page: $page, pageSize: 4}
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useLoadMoreBlogQuery__
+ *
+ * To run a query within a React component, call `useLoadMoreBlogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLoadMoreBlogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLoadMoreBlogQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      page: // value for 'page'
+ *   },
+ * });
+ */
+export function useLoadMoreBlogQuery(baseOptions: Apollo.QueryHookOptions<LoadMoreBlogQuery, LoadMoreBlogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LoadMoreBlogQuery, LoadMoreBlogQueryVariables>(LoadMoreBlogDocument, options);
+      }
+export function useLoadMoreBlogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LoadMoreBlogQuery, LoadMoreBlogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LoadMoreBlogQuery, LoadMoreBlogQueryVariables>(LoadMoreBlogDocument, options);
+        }
+export type LoadMoreBlogQueryHookResult = ReturnType<typeof useLoadMoreBlogQuery>;
+export type LoadMoreBlogLazyQueryHookResult = ReturnType<typeof useLoadMoreBlogLazyQuery>;
+export type LoadMoreBlogQueryResult = Apollo.QueryResult<LoadMoreBlogQuery, LoadMoreBlogQueryVariables>;

@@ -1,0 +1,33 @@
+query loadMoreBlog($slug: String!, $page: Int!) {
+  articles(
+    filters: { categories: { slug: { eq: $slug } } }
+    sort: "createdAt:desc"
+    pagination: { page: $page, pageSize: 4 }
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+  }
+}
