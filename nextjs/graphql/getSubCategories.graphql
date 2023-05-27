@@ -1,0 +1,10 @@
+query getSubCategories($slug: String!) {
+  categories(filters: { category: { slug: { eq: $slug } } }) {
+    data {
+      attributes {
+        name
+        slug
+      }
+    }
+  }
+}

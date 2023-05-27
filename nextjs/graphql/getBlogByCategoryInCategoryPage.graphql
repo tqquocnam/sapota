@@ -1,0 +1,39 @@
+query getBlogByCategoryInCategoryPage($slug: String!) {
+  articles(
+    filters: { categories: { slug: { eq: $slug } } }
+    sort: "createdAt:desc"
+    # Turn off pagination
+    pagination: { page: 1, pageSize: 1000 }
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}

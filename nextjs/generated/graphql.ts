@@ -1424,12 +1424,31 @@ export type GetBlogByCategoryQueryVariables = Exact<{
 
 export type GetBlogByCategoryQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
 
+export type GetBlogByCategoryInCategoryPageQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetBlogByCategoryInCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
+export type GetBlogByCategoryInSubCategoryPageQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetBlogByCategoryInSubCategoryPageQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null }> } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
 export type GetBlogDetailQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
 export type GetBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, content?: string | null, description?: string | null, meta_title?: string | null, related_article?: { __typename?: 'ArticleRelationResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null, createdAt?: any | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null } | null } | null } | null }> } | null, thumbnail?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+
+export type GetListCategoryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetListCategoryQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', slug?: string | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', slug?: string | null } | null }> } | null } | null }> } | null };
 
 export type GetMenuHeaderQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1441,6 +1460,11 @@ export type GetParentCategoriesQueryVariables = Exact<{ [key: string]: never; }>
 
 export type GetParentCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null };
 
+export type GetParentCategoriesInCategoryPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetParentCategoriesInCategoryPageQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', slug?: string | null } | null }> } | null };
+
 export type GetRecentBlogListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1450,6 +1474,13 @@ export type GetRecentBlogListInBlogDetailQueryVariables = Exact<{ [key: string]:
 
 
 export type GetRecentBlogListInBlogDetailQuery = { __typename?: 'Query', articles?: { __typename?: 'ArticleEntityResponseCollection', data: Array<{ __typename?: 'ArticleEntity', attributes?: { __typename?: 'Article', title?: string | null, slug?: string | null } | null }> } | null };
+
+export type GetSubCategoriesQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetSubCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', name?: string | null, slug?: string | null } | null }> } | null };
 
 export type LoadMoreBlogQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -1754,6 +1785,142 @@ export function useGetBlogByCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetBlogByCategoryQueryHookResult = ReturnType<typeof useGetBlogByCategoryQuery>;
 export type GetBlogByCategoryLazyQueryHookResult = ReturnType<typeof useGetBlogByCategoryLazyQuery>;
 export type GetBlogByCategoryQueryResult = Apollo.QueryResult<GetBlogByCategoryQuery, GetBlogByCategoryQueryVariables>;
+export const GetBlogByCategoryInCategoryPageDocument = gql`
+    query getBlogByCategoryInCategoryPage($slug: String!) {
+  articles(
+    filters: {categories: {slug: {eq: $slug}}}
+    sort: "createdAt:desc"
+    pagination: {page: 1, pageSize: 1000}
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBlogByCategoryInCategoryPageQuery__
+ *
+ * To run a query within a React component, call `useGetBlogByCategoryInCategoryPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlogByCategoryInCategoryPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlogByCategoryInCategoryPageQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetBlogByCategoryInCategoryPageQuery(baseOptions: Apollo.QueryHookOptions<GetBlogByCategoryInCategoryPageQuery, GetBlogByCategoryInCategoryPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBlogByCategoryInCategoryPageQuery, GetBlogByCategoryInCategoryPageQueryVariables>(GetBlogByCategoryInCategoryPageDocument, options);
+      }
+export function useGetBlogByCategoryInCategoryPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlogByCategoryInCategoryPageQuery, GetBlogByCategoryInCategoryPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBlogByCategoryInCategoryPageQuery, GetBlogByCategoryInCategoryPageQueryVariables>(GetBlogByCategoryInCategoryPageDocument, options);
+        }
+export type GetBlogByCategoryInCategoryPageQueryHookResult = ReturnType<typeof useGetBlogByCategoryInCategoryPageQuery>;
+export type GetBlogByCategoryInCategoryPageLazyQueryHookResult = ReturnType<typeof useGetBlogByCategoryInCategoryPageLazyQuery>;
+export type GetBlogByCategoryInCategoryPageQueryResult = Apollo.QueryResult<GetBlogByCategoryInCategoryPageQuery, GetBlogByCategoryInCategoryPageQueryVariables>;
+export const GetBlogByCategoryInSubCategoryPageDocument = gql`
+    query getBlogByCategoryInSubCategoryPage($slug: String!) {
+  articles(
+    filters: {categories: {slug: {eq: $slug}}}
+    sort: "createdAt:desc"
+    pagination: {page: 1, pageSize: 1000}
+  ) {
+    data {
+      attributes {
+        title
+        slug
+        createdAt
+        categories {
+          data {
+            attributes {
+              name
+              slug
+            }
+          }
+        }
+        thumbnail {
+          data {
+            attributes {
+              url
+              alternativeText
+              width
+              height
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetBlogByCategoryInSubCategoryPageQuery__
+ *
+ * To run a query within a React component, call `useGetBlogByCategoryInSubCategoryPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlogByCategoryInSubCategoryPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlogByCategoryInSubCategoryPageQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetBlogByCategoryInSubCategoryPageQuery(baseOptions: Apollo.QueryHookOptions<GetBlogByCategoryInSubCategoryPageQuery, GetBlogByCategoryInSubCategoryPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBlogByCategoryInSubCategoryPageQuery, GetBlogByCategoryInSubCategoryPageQueryVariables>(GetBlogByCategoryInSubCategoryPageDocument, options);
+      }
+export function useGetBlogByCategoryInSubCategoryPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlogByCategoryInSubCategoryPageQuery, GetBlogByCategoryInSubCategoryPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBlogByCategoryInSubCategoryPageQuery, GetBlogByCategoryInSubCategoryPageQueryVariables>(GetBlogByCategoryInSubCategoryPageDocument, options);
+        }
+export type GetBlogByCategoryInSubCategoryPageQueryHookResult = ReturnType<typeof useGetBlogByCategoryInSubCategoryPageQuery>;
+export type GetBlogByCategoryInSubCategoryPageLazyQueryHookResult = ReturnType<typeof useGetBlogByCategoryInSubCategoryPageLazyQuery>;
+export type GetBlogByCategoryInSubCategoryPageQueryResult = Apollo.QueryResult<GetBlogByCategoryInSubCategoryPageQuery, GetBlogByCategoryInSubCategoryPageQueryVariables>;
 export const GetBlogDetailDocument = gql`
     query getBlogDetail($slug: String!) {
   articles(filters: {slug: {eq: $slug}}) {
@@ -1845,6 +2012,51 @@ export function useGetBlogDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type GetBlogDetailQueryHookResult = ReturnType<typeof useGetBlogDetailQuery>;
 export type GetBlogDetailLazyQueryHookResult = ReturnType<typeof useGetBlogDetailLazyQuery>;
 export type GetBlogDetailQueryResult = Apollo.QueryResult<GetBlogDetailQuery, GetBlogDetailQueryVariables>;
+export const GetListCategoryDocument = gql`
+    query getListCategory {
+  categories(filters: {category: {name: {eq: null}}}) {
+    data {
+      attributes {
+        slug
+        categories {
+          data {
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetListCategoryQuery__
+ *
+ * To run a query within a React component, call `useGetListCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetListCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetListCategoryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetListCategoryQuery(baseOptions?: Apollo.QueryHookOptions<GetListCategoryQuery, GetListCategoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetListCategoryQuery, GetListCategoryQueryVariables>(GetListCategoryDocument, options);
+      }
+export function useGetListCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetListCategoryQuery, GetListCategoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetListCategoryQuery, GetListCategoryQueryVariables>(GetListCategoryDocument, options);
+        }
+export type GetListCategoryQueryHookResult = ReturnType<typeof useGetListCategoryQuery>;
+export type GetListCategoryLazyQueryHookResult = ReturnType<typeof useGetListCategoryLazyQuery>;
+export type GetListCategoryQueryResult = Apollo.QueryResult<GetListCategoryQuery, GetListCategoryQueryVariables>;
 export const GetMenuHeaderDocument = gql`
     query getMenuHeader {
   menus(filters: {type: {eq: "header"}}) {
@@ -1925,6 +2137,44 @@ export function useGetParentCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type GetParentCategoriesQueryHookResult = ReturnType<typeof useGetParentCategoriesQuery>;
 export type GetParentCategoriesLazyQueryHookResult = ReturnType<typeof useGetParentCategoriesLazyQuery>;
 export type GetParentCategoriesQueryResult = Apollo.QueryResult<GetParentCategoriesQuery, GetParentCategoriesQueryVariables>;
+export const GetParentCategoriesInCategoryPageDocument = gql`
+    query getParentCategoriesInCategoryPage {
+  categories(filters: {category: {name: {eq: null}}}) {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetParentCategoriesInCategoryPageQuery__
+ *
+ * To run a query within a React component, call `useGetParentCategoriesInCategoryPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetParentCategoriesInCategoryPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetParentCategoriesInCategoryPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetParentCategoriesInCategoryPageQuery(baseOptions?: Apollo.QueryHookOptions<GetParentCategoriesInCategoryPageQuery, GetParentCategoriesInCategoryPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetParentCategoriesInCategoryPageQuery, GetParentCategoriesInCategoryPageQueryVariables>(GetParentCategoriesInCategoryPageDocument, options);
+      }
+export function useGetParentCategoriesInCategoryPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetParentCategoriesInCategoryPageQuery, GetParentCategoriesInCategoryPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetParentCategoriesInCategoryPageQuery, GetParentCategoriesInCategoryPageQueryVariables>(GetParentCategoriesInCategoryPageDocument, options);
+        }
+export type GetParentCategoriesInCategoryPageQueryHookResult = ReturnType<typeof useGetParentCategoriesInCategoryPageQuery>;
+export type GetParentCategoriesInCategoryPageLazyQueryHookResult = ReturnType<typeof useGetParentCategoriesInCategoryPageLazyQuery>;
+export type GetParentCategoriesInCategoryPageQueryResult = Apollo.QueryResult<GetParentCategoriesInCategoryPageQuery, GetParentCategoriesInCategoryPageQueryVariables>;
 export const GetRecentBlogListDocument = gql`
     query getRecentBlogList {
   articles(sort: "createdAt:desc", pagination: {limit: 5}) {
@@ -2031,6 +2281,46 @@ export function useGetRecentBlogListInBlogDetailLazyQuery(baseOptions?: Apollo.L
 export type GetRecentBlogListInBlogDetailQueryHookResult = ReturnType<typeof useGetRecentBlogListInBlogDetailQuery>;
 export type GetRecentBlogListInBlogDetailLazyQueryHookResult = ReturnType<typeof useGetRecentBlogListInBlogDetailLazyQuery>;
 export type GetRecentBlogListInBlogDetailQueryResult = Apollo.QueryResult<GetRecentBlogListInBlogDetailQuery, GetRecentBlogListInBlogDetailQueryVariables>;
+export const GetSubCategoriesDocument = gql`
+    query getSubCategories($slug: String!) {
+  categories(filters: {category: {slug: {eq: $slug}}}) {
+    data {
+      attributes {
+        name
+        slug
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetSubCategoriesQuery__
+ *
+ * To run a query within a React component, call `useGetSubCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSubCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSubCategoriesQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetSubCategoriesQuery(baseOptions: Apollo.QueryHookOptions<GetSubCategoriesQuery, GetSubCategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSubCategoriesQuery, GetSubCategoriesQueryVariables>(GetSubCategoriesDocument, options);
+      }
+export function useGetSubCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSubCategoriesQuery, GetSubCategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSubCategoriesQuery, GetSubCategoriesQueryVariables>(GetSubCategoriesDocument, options);
+        }
+export type GetSubCategoriesQueryHookResult = ReturnType<typeof useGetSubCategoriesQuery>;
+export type GetSubCategoriesLazyQueryHookResult = ReturnType<typeof useGetSubCategoriesLazyQuery>;
+export type GetSubCategoriesQueryResult = Apollo.QueryResult<GetSubCategoriesQuery, GetSubCategoriesQueryVariables>;
 export const LoadMoreBlogDocument = gql`
     query loadMoreBlog($slug: String!, $page: Int!) {
   articles(

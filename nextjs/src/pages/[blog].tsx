@@ -9,6 +9,7 @@ import {
   GetAllBlogsDocument,
   GetBlogDetailDocument,
   GetRecentBlogListInBlogDetailDocument,
+  UploadFileEntityResponse,
 } from "generated/graphql";
 import { utils } from "src/utils";
 import BlogBody from "src/components/BlogBody";
@@ -158,7 +159,10 @@ const BlogDetail = ({
                         <Link href={item?.attributes?.slug}>
                           <div className="cursor-pointer">
                             <CustomImage
-                              image={item?.attributes?.thumbnail}
+                              image={
+                                item?.attributes
+                                  ?.thumbnail as UploadFileEntityResponse
+                              }
                               widthCustom={540}
                               heightCustom={360}
                             />

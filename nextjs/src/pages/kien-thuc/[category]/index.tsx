@@ -4,7 +4,11 @@ import { gql, useQuery } from "@apollo/client";
 import {
   ArticleEntity,
   CategoryEntity,
+  GetBlogByCategoryInCategoryPageDocument,
+  GetParentCategoriesDocument,
+  GetSubCategoriesDocument,
   ResponseCollectionMeta,
+  useGetBlogByCategoryInCategoryPageQuery,
 } from "generated/graphql";
 import BlogRecentList from "src/components/BlogRecentList";
 import Tag from "src/components/Tag";
@@ -20,109 +24,6 @@ interface IBlogByCategory {
   blogMeta: ResponseCollectionMeta;
   categorySlug: string;
 }
-const GET_PARENT_CATEGORIES_IN_CATEGORY_PAGE = gql`
-  query getParentCategoriesInCategoryPage {
-    categories(filters: { category: { name: { eq: null } } }) {
-      data {
-        attributes {
-          slug
-        }
-      }
-    }
-  }
-`;
-
-const GET_SUB_CATEGORIES = gql`
-  query getSubCategories($slug: String!) {
-    categories(filters: { category: { slug: { eq: $slug } } }) {
-      data {
-        attributes {
-          name
-          slug
-        }
-      }
-    }
-  }
-`;
-
-const GET_BLOG_BY_CATEGORY_IN_CATEGORY_PAGE = gql`
-  query getBlogByCategoryInCategoryPage($slug: String!) {
-    articles(
-      filters: { categories: { slug: { eq: $slug } } }
-      sort: "createdAt:desc"
-      # Turn off pagination
-      pagination: { page: 1, pageSize: 1000 }
-    ) {
-      data {
-        attributes {
-          title
-          slug
-          createdAt
-          categories {
-            data {
-              attributes {
-                name
-                slug
-              }
-            }
-          }
-          thumbnail {
-            data {
-              attributes {
-                url
-                alternativeText
-                width
-                height
-              }
-            }
-          }
-        }
-      }
-      meta {
-        pagination {
-          total
-        }
-      }
-    }
-  }
-`;
-
-gql`
-  query getBlogByCategoryPagination($slug: String!) {
-    articles(
-      filters: { categories: { slug: { eq: $slug } } }
-      sort: "createdAt:desc"
-      # Turn off pagination
-      pagination: { page: 1, pageSize: 1000 }
-    ) {
-      data {
-        attributes {
-          title
-          slug
-          createdAt
-          categories {
-            data {
-              attributes {
-                name
-                slug
-              }
-            }
-          }
-          thumbnail {
-            data {
-              attributes {
-                url
-                alternativeText
-                width
-                height
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 const ListBlogFilterByCategory = ({
   blogList,
@@ -228,7 +129,7 @@ export async function getStaticPaths() {
   const apolloClient = initializeApollo();
 
   const { data: subCategories } = await apolloClient.query({
-    query: GET_PARENT_CATEGORIES_IN_CATEGORY_PAGE,
+    query: GetParentCategoriesDocument,
   });
 
   return {
@@ -248,14 +149,14 @@ export async function getStaticProps({
   const apolloClient = initializeApollo();
 
   const { data: subCategories } = await apolloClient.query({
-    query: GET_SUB_CATEGORIES,
+    query: GetSubCategoriesDocument,
     variables: {
       slug: params.category,
     },
   });
 
   const { data: blogList } = await apolloClient.query({
-    query: GET_BLOG_BY_CATEGORY_IN_CATEGORY_PAGE,
+    query: GetBlogByCategoryInCategoryPageDocument,
     variables: {
       slug: params.category,
     },

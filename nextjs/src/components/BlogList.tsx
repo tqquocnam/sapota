@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArticleEntity } from "generated/graphql";
+import { ArticleEntity, UploadFileEntityResponse } from "generated/graphql";
 import ChevronLeft from "public/icon/chevron-left-black.png";
 import ChevronRight from "public/icon/chevron-right-black.png";
 import Link from "next/link";
@@ -41,7 +41,9 @@ const BlogList = ({
               <Link href={`/${item?.attributes?.slug}`}>
                 <div className="cursor-pointer">
                   <CustomImage
-                    image={item?.attributes?.thumbnail}
+                    image={
+                      item?.attributes?.thumbnail as UploadFileEntityResponse
+                    }
                     widthCustom={270}
                     heightCustom={180}
                   />

@@ -1,0 +1,16 @@
+query getListCategory {
+  categories(filters: { category: { name: { eq: null } } }) {
+    data {
+      attributes {
+        slug
+        categories {
+          data {
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}
